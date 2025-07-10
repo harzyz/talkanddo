@@ -1,6 +1,7 @@
 /* Modern Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manufacturing+Consent&display=swap");
 
 /* CSS Variables */
 :root {
@@ -203,6 +204,12 @@ body {
   height: 150px;
   transform: rotate(-8deg);
   z-index: 1;
+}
+
+h1{
+  font-family: "Manufacturing Consent", system-ui;
+  color: #fff;
+  text-align: center;
 }
 
 /* Merch List Section - Overlay */
