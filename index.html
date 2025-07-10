@@ -23,26 +23,6 @@
       <div class="gradient-overlay"></div>
     </div>
 
-    <!-- Header Section -->
-    <header class="hero-header">
-      <div class="header-content">
-        <div class="logo-container">
-          <div class="logo-circle">
-            <span class="logo-text">HOF</span>
-          </div>
-        </div>
-        <h1 class="main-title">
-          <span class="title-line">HALL OF FAME</span>
-          <span class="subtitle-line">Merch List V2</span>
-        </h1>
-        <div class="header-decoration">
-          <div class="decoration-line"></div>
-          <div class="decoration-dot"></div>
-          <div class="decoration-line"></div>
-        </div>
-      </div>
-    </header>
-
     <!-- Main Content -->
     <main class="main-content">
       <!-- Artistic Motif -->
@@ -85,8 +65,8 @@
         </div>
       </div>
 
-      <!-- Merch List Section -->
-      <section class="merch-list-section">
+      <!-- Merch List Section - Overlay -->
+      <section id="merchListSection" class="merch-list-section">
         <div class="merch-container">
           <div class="merch-card">
             <div class="card-header">
@@ -110,82 +90,110 @@
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- Collection Modal -->
-    <div id="collectionModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title">Hall of Fame Collection</h2>
-          <button class="modal-close" onclick="closeModal()">&times;</button>
+      <!-- Merch Carousel Section -->
+      <section id="merchCarouselSection" class="merch-carousel-section">
+        <div class="carousel-container">
+          <div class="carousel-header">
+            <h2 class="carousel-title">Merch Collection</h2>
+            <button class="carousel-close" onclick="closeCarousel()">
+              &times;
+            </button>
+          </div>
+          <div class="carousel-wrapper">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img
+                  src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.11_2_hlmv49.jpg"
+                  alt="Merch Item 1"
+                />
+                <div class="slide-info">
+                  <h3>Classic Tee</h3>
+                  <p>Premium cotton blend</p>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <img
+                  src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.11_1_jmvwpc.jpg"
+                  alt="Merch Item 2"
+                />
+                <div class="slide-info">
+                  <h3>Limited Hoodie</h3>
+                  <p>Exclusive design</p>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <img
+                  src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076209/WhatsApp_Image_2025-07-09_at_07.40.11_lp1s1e.jpg"
+                  alt="Merch Item 3"
+                />
+                <div class="slide-info">
+                  <h3>Signature Cap</h3>
+                  <p>Embroidered logo</p>
+                </div>
+              </div>
+              <div class="carousel-slide">
+                <img
+                  src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.10_xnm1nx.jpg"
+                  alt="Merch Item 4"
+                />
+                <div class="slide-info">
+                  <h3>Collector's Print</h3>
+                  <p>Limited edition</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn prev" onclick="prevSlide()">‹</button>
+            <div class="carousel-dots">
+              <span class="dot active" onclick="goToSlide(0)"></span>
+              <span class="dot" onclick="goToSlide(1)"></span>
+              <span class="dot" onclick="goToSlide(2)"></span>
+              <span class="dot" onclick="goToSlide(3)"></span>
+            </div>
+            <button class="carousel-btn next" onclick="nextSlide()">›</button>
+          </div>
         </div>
-        <div class="modal-body">
-          <div class="collection-grid">
-            <div class="collection-item">
-              <img src="./T&D.png" alt="Merch Item 1" />
-              <div class="item-info">
-                <h3>Classic Tee</h3>
-                <p>Premium cotton blend</p>
-                <span class="price">$29.99</span>
+      </section>
+
+      <!-- Featured Section -->
+      <section id="featuredSection" class="featured-section">
+        <div class="featured-container">
+          <div class="featured-content">
+            <h2 class="featured-title">Featured Items</h2>
+            <p class="featured-description">
+              Discover our most popular merchandise
+            </p>
+            <div class="featured-grid">
+              <div class="featured-item">
+                <img src="./T&D.png" alt="Featured Item 1" />
+                <h3>Hall of Fame Tee</h3>
               </div>
-            </div>
-            <div class="collection-item">
-              <img
-                src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.11_2_hlmv49.jpg"
-                alt="Merch Item 2"
-              />
-              <div class="item-info">
-                <h3>Limited Hoodie</h3>
-                <p>Exclusive design</p>
-                <span class="price">$59.99</span>
-              </div>
-            </div>
-            <div class="collection-item">
-              <img
-                src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.11_1_jmvwpc.jpg"
-                alt="Merch Item 3"
-              />
-              <div class="item-info">
-                <h3>Signature Cap</h3>
-                <p>Embroidered logo</p>
-                <span class="price">$24.99</span>
-              </div>
-            </div>
-            <div class="collection-item">
-              <img
-                src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076209/WhatsApp_Image_2025-07-09_at_07.40.11_lp1s1e.jpg"
-                alt="Merch Item 4"
-              />
-              <div class="item-info">
-                <h3>Collector's Print</h3>
-                <p>Limited edition</p>
-                <span class="price">$39.99</span>
+              <div class="featured-item">
+                <img
+                  src="https://res.cloudinary.com/dilkydngl/image/upload/v1752076208/WhatsApp_Image_2025-07-09_at_07.40.11_2_hlmv49.jpg"
+                  alt="Featured Item 2"
+                />
+                <h3>Exclusive Hoodie</h3>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          <button class="modal-btn secondary" onclick="closeModal()">
-            Close
-          </button>
-          <button class="modal-btn primary" onclick="shopNow()">
-            Shop Now
-          </button>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
 
     <!-- Navigation -->
     <nav class="floating-nav">
-      <div class="nav-item active" onclick="setActiveNav(this)">
+      <div class="nav-item active" onclick="navigateTo('home')">
         <span class="nav-icon">🏆</span>
         <span class="nav-label">Hall of Fame</span>
       </div>
-      <div class="nav-item" onclick="setActiveNav(this)">
+      <div class="nav-item" onclick="navigateTo('merch')">
         <span class="nav-icon">🛍️</span>
         <span class="nav-label">Merch</span>
       </div>
-      <div class="nav-item" onclick="setActiveNav(this)">
+      <div class="nav-item" onclick="navigateTo('featured')">
         <span class="nav-icon">⭐</span>
         <span class="nav-label">Featured</span>
       </div>
@@ -200,31 +208,49 @@
     </div>
 
     <script>
-      // Modal functionality
-      function viewCollection() {
-        const modal = document.getElementById("collectionModal");
-        modal.style.display = "flex";
-        document.body.style.overflow = "hidden";
+      let currentSlide = 0;
+      let carouselInterval;
+      const totalSlides = 4;
 
-        // Add entrance animation
-        setTimeout(() => {
-          modal.classList.add("modal-active");
-        }, 10);
+      // Navigation functionality
+      function navigateTo(page) {
+        // Remove active class from all nav items
+        document.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Add active class to clicked item
+        event.currentTarget.classList.add("active");
+
+        // Hide all sections
+        document.getElementById("merchListSection").style.display = "none";
+        document.getElementById("merchCarouselSection").style.display = "none";
+        document.getElementById("featuredSection").style.display = "none";
+
+        // Show appropriate section
+        switch (page) {
+          case "home":
+            document.getElementById("merchListSection").style.display = "flex";
+            break;
+          case "merch":
+            document.getElementById("merchCarouselSection").style.display =
+              "flex";
+            startCarousel();
+            break;
+          case "featured":
+            document.getElementById("featuredSection").style.display = "flex";
+            break;
+        }
       }
 
-      function closeModal() {
-        const modal = document.getElementById("collectionModal");
-        modal.classList.remove("modal-active");
-
-        setTimeout(() => {
-          modal.style.display = "none";
-          document.body.style.overflow = "auto";
-        }, 300);
+      // View Collection functionality
+      function viewCollection() {
+        document.getElementById("merchListSection").style.display = "flex";
+        showToast("Collection view activated! 🎉");
       }
 
       // Download functionality
       function downloadMerch() {
-        // Create a temporary link to download the image
         const link = document.createElement("a");
         link.href = "./T&D.png";
         link.download = "Hall-of-Fame-Merch-List.png";
@@ -235,28 +261,52 @@
         showToast("Merch list downloaded successfully! 🎉");
       }
 
-      // Shop now functionality
-      function shopNow() {
-        showToast("Redirecting to shop... 🛍️");
-        // You can replace this with your actual shop URL
-        setTimeout(() => {
-          window.open("https://your-shop-url.com", "_blank");
-        }, 1500);
+      // Carousel functionality
+      function startCarousel() {
+        currentSlide = 0;
+        updateCarousel();
+        carouselInterval = setInterval(nextSlide, 3000); // Auto-play every 3 seconds
       }
 
-      // Navigation functionality
-      function setActiveNav(element) {
-        // Remove active class from all nav items
-        document.querySelectorAll(".nav-item").forEach((item) => {
-          item.classList.remove("active");
+      function stopCarousel() {
+        if (carouselInterval) {
+          clearInterval(carouselInterval);
+        }
+      }
+
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }
+
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        const track = document.querySelector(".carousel-track");
+        const dots = document.querySelectorAll(".dot");
+
+        // Update slide position
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+        // Update dots
+        dots.forEach((dot, index) => {
+          dot.classList.toggle("active", index === currentSlide);
         });
+      }
 
-        // Add active class to clicked item
-        element.classList.add("active");
-
-        // Show different content based on nav item
-        const label = element.querySelector(".nav-label").textContent;
-        showToast(`Navigating to ${label}... 🚀`);
+      function closeCarousel() {
+        document.getElementById("merchCarouselSection").style.display = "none";
+        stopCarousel();
+        // Return to home view
+        document.querySelector(".nav-item").click();
       }
 
       // Toast notification system
@@ -267,7 +317,6 @@
         toastMessage.textContent = message;
         toast.classList.add("toast-show");
 
-        // Auto hide after 3 seconds
         setTimeout(() => {
           hideToast();
         }, 3000);
@@ -277,21 +326,6 @@
         const toast = document.getElementById("toast");
         toast.classList.remove("toast-show");
       }
-
-      // Close modal when clicking outside
-      window.onclick = function (event) {
-        const modal = document.getElementById("collectionModal");
-        if (event.target === modal) {
-          closeModal();
-        }
-      };
-
-      // Close modal with Escape key
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-          closeModal();
-        }
-      });
 
       // Add tilt effect to motif images
       document.querySelectorAll("[data-tilt]").forEach((element) => {
@@ -313,6 +347,12 @@
           this.style.transform =
             "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
         });
+      });
+
+      // Initialize the app
+      document.addEventListener("DOMContentLoaded", function () {
+        // Show home view by default
+        document.getElementById("merchListSection").style.display = "flex";
       });
     </script>
   </body>

@@ -100,111 +100,21 @@ body {
   }
 }
 
-/* Header Styles */
-.hero-header {
-  position: relative;
-  padding: 2rem 0;
-  text-align: center;
-  z-index: 10;
-}
-
-.header-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.logo-container {
-  margin-bottom: 2rem;
-}
-
-.logo-circle {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  box-shadow: var(--shadow-light);
-  transition: var(--transition);
-}
-
-.logo-circle:hover {
-  transform: scale(1.1);
-  box-shadow: var(--shadow-medium);
-}
-
-.logo-text {
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: white;
-  letter-spacing: 2px;
-}
-
-.main-title {
-  font-family: "Playfair Display", serif;
-  margin-bottom: 2rem;
-}
-
-.title-line {
-  display: block;
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  margin-bottom: 0.5rem;
-  letter-spacing: 3px;
-}
-
-.subtitle-line {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
-.header-decoration {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.decoration-line {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, white, transparent);
-}
-
-.decoration-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-}
-
 /* Main Content */
 .main-content {
   position: relative;
   z-index: 5;
-  padding: 2rem 0;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Enhanced Artistic Motif */
 .artistic-motif {
-  position: relative;
+  position: absolute;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .motif-image {
@@ -295,11 +205,19 @@ body {
   z-index: 1;
 }
 
-/* Merch List Section */
+/* Merch List Section - Overlay */
 .merch-list-section {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
-  padding: 4rem 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
 }
 
 .merch-container {
@@ -438,46 +356,34 @@ body {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
+/* Merch Carousel Section */
+.merch-carousel-section {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
-.modal.modal-active {
-  opacity: 1;
-}
-
-.modal-content {
+.carousel-container {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
   max-width: 800px;
   width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  transform: scale(0.7);
-  transition: transform 0.3s ease;
+  max-height: 80vh;
+  overflow: hidden;
   box-shadow: var(--shadow-heavy);
 }
 
-.modal.modal-active .modal-content {
-  transform: scale(1);
-}
-
-.modal-header {
+.carousel-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -485,7 +391,7 @@ body {
   border-bottom: 1px solid var(--glass-border);
 }
 
-.modal-title {
+.carousel-title {
   font-family: "Playfair Display", serif;
   font-size: 2rem;
   font-weight: 600;
@@ -493,7 +399,7 @@ body {
   margin: 0;
 }
 
-.modal-close {
+.carousel-close {
   background: none;
   border: none;
   color: white;
@@ -509,22 +415,159 @@ body {
   justify-content: center;
 }
 
-.modal-close:hover {
+.carousel-close:hover {
   background: rgba(255, 255, 255, 0.1);
   transform: rotate(90deg);
 }
 
-.modal-body {
-  padding: 2rem;
+.carousel-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
 }
 
-.collection-grid {
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.slide-info {
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.slide-info h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.slide-info p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem 2rem;
+  border-top: 1px solid var(--glass-border);
+}
+
+.carousel-btn {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot.active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Featured Section */
+.featured-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 15;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.featured-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.featured-content {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  box-shadow: var(--shadow-heavy);
+}
+
+.featured-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.featured-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+}
+
+.featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+  margin-top: 2rem;
 }
 
-.collection-item {
+.featured-item {
   background: rgba(255, 255, 255, 0.05);
   border-radius: var(--border-radius);
   overflow: hidden;
@@ -532,96 +575,30 @@ body {
   border: 1px solid var(--glass-border);
 }
 
-.collection-item:hover {
+.featured-item:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-medium);
   background: rgba(255, 255, 255, 0.1);
 }
 
-.collection-item img {
+.featured-item img {
   width: 100%;
   height: 200px;
   object-fit: cover;
   transition: var(--transition);
 }
 
-.collection-item:hover img {
+.featured-item:hover img {
   transform: scale(1.05);
 }
 
-.item-info {
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.item-info h3 {
+.featured-item h3 {
   font-family: "Playfair Display", serif;
   font-size: 1.25rem;
   font-weight: 600;
   color: white;
-  margin-bottom: 0.5rem;
-}
-
-.item-info p {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1rem;
-  font-size: 0.875rem;
-}
-
-.price {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--accent-gradient);
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.modal-footer {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  padding: 1rem 2rem 2rem;
-  border-top: 1px solid var(--glass-border);
-}
-
-.modal-btn {
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 25px;
-  font-weight: 600;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.modal-btn.primary {
-  background: var(--primary-gradient);
-  color: white;
-}
-
-.modal-btn.secondary {
-  background: transparent;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.modal-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-medium);
-}
-
-.modal-btn.primary:hover {
-  background: var(--secondary-gradient);
-}
-
-.modal-btn.secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin: 0;
 }
 
 /* Toast Notification */
@@ -728,14 +705,6 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .title-line {
-    font-size: 2.5rem;
-  }
-
-  .subtitle-line {
-    font-size: 1.25rem;
-  }
-
   .merch-card {
     margin: 0 1rem;
     padding: 1.5rem;
@@ -766,22 +735,21 @@ body {
     display: none;
   }
 
-  .modal-content {
+  .carousel-container {
     width: 95%;
     margin: 1rem;
   }
 
-  .modal-header {
+  .carousel-header {
     padding: 1.5rem 1.5rem 1rem;
   }
 
-  .modal-body {
-    padding: 1.5rem;
+  .carousel-wrapper {
+    height: 300px;
   }
 
-  .collection-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .carousel-slide img {
+    height: 200px;
   }
 
   .toast {
@@ -790,30 +758,17 @@ body {
     left: 1rem;
     max-width: none;
   }
+
+  .featured-content {
+    padding: 2rem;
+  }
+
+  .featured-title {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .header-content {
-    padding: 0 1rem;
-  }
-
-  .title-line {
-    font-size: 2rem;
-  }
-
-  .subtitle-line {
-    font-size: 1rem;
-  }
-
-  .logo-circle {
-    width: 60px;
-    height: 60px;
-  }
-
-  .logo-text {
-    font-size: 1.25rem;
-  }
-
   /* Mobile motif adjustments */
   .image-1 {
     top: 20%;
@@ -847,13 +802,17 @@ body {
     transform: rotate(-5deg);
   }
 
-  .modal-title {
+  .carousel-title {
     font-size: 1.5rem;
   }
 
-  .modal-close {
+  .carousel-close {
     font-size: 1.5rem;
     width: 35px;
     height: 35px;
+  }
+
+  .featured-title {
+    font-size: 1.75rem;
   }
 }
